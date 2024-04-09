@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
+const connectionString = require('./connectionString')
+
 
 
 
@@ -8,7 +10,7 @@ app.get('/', (req, res) => {
     res.send("hello 3001");    
 });
 
-mongoose.connect("mongodb+srv://marcuslinglt:sE3HVvw8BiByGZF9@nodesimplecrud.beqfjyb.mongodb.net/?retryWrites=true&w=majority&appName=NodeSimpleCRUD")
+mongoose.connect(connectionString)
     .then(() => {
         console.log("Connected to MongoDB");
         // listen to port 3000
