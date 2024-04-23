@@ -7,6 +7,7 @@ const app = express()
 // make this server accept json data
 app.use(express.json())
 
+// test route
 app.get('/', (req, res) => {
     res.send("this is a response from the server for get request");    
 });
@@ -15,6 +16,8 @@ app.get('/', (req, res) => {
 //     console.log(req.body)
 //     res.send(req.body)
 // })
+
+// get all products
 app.get('/api/products', async (req, res) => {
     try {
         const products = await Product.find({});
@@ -24,7 +27,8 @@ app.get('/api/products', async (req, res) => {
     }
 })
 
-app.get('/api/products/:id', async (req, res) => {
+// get single product by id
+app.get('/api/product/:id', async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
         res.status(200).json(product);
@@ -33,6 +37,7 @@ app.get('/api/products/:id', async (req, res) => {
     }
 })
 
+// create new product
 app.post('/api/products', async (req, res) => {
     try {
         const product = await Product.create(req.body);
@@ -40,7 +45,33 @@ app.post('/api/products', async (req, res) => {
     } catch (error) {
         res.status(500).json({message: error.message})
     }
+})
 
+// update product
+app.put('/api/product/:id', async (req, res) => {
+    try {
+        const product = await Product.findByIdAndUpdate(req.params.id, req.body);
+        if (!product) {
+            return res.status(404).json({message: 'Product not found'});
+        }
+        const updatedProduct = await Product.findById(req.params.id);
+        res.status(200).json(updatedProduct);
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
+// delete product
+app.delete('/api/product/:id', async (req, res) => {
+    try {
+        const product = await Product.findByIdAndDelete(req.params.id);
+        if (!product) {
+            return res.status(404).json({message: 'Product not found'});
+        }
+        res.status(200).json({message: 'Product deleted'});
+    } catch (error) {
+        res.status(500).json({message: error.message})
+    }
 })
 
 mongoose.connect(config.connectionString)
