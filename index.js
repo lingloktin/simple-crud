@@ -3,19 +3,20 @@ const mongoose = require('mongoose')
 const Product = require('./models/product.model')
 const config = require('./config')
 const app = express()
+const productRoutes = require('./routes/product.route')
 
-// make this server accept json data
+// middleware
+// make this server accept json data and form data
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+app.use("/api/products", productRoutes)
+
 
 // test route
 app.get('/', (req, res) => {
     res.send("this is a response from the server for get request");    
 });
-
-// app.post('/test-post', (req, res) => {
-//     console.log(req.body)
-//     res.send(req.body)
-// })
 
 // get all products
 app.get('/api/products', async (req, res) => {
