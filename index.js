@@ -9,7 +9,8 @@ const productRoutes = require('./routes/product.route')
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// localhost:3000/api/products route is defined in routes/product.route.js
+// This line tells the express app to use the product routes
+// when a request is made to /api/products
 app.use("/api/products", productRoutes)
 
 mongoose.connect(config.connectionString)
