@@ -9,8 +9,6 @@ This project is a simple CRUD (Create, Read, Update, Delete) application designe
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -54,10 +52,3 @@ The application provides the following CRUD operations for products:
 - `PUT /api/products/:id`: Update a specific product by ID
 - `DELETE /api/products/:id`: Delete a specific product by ID
 
-## Contributing
-
-Contributions are welcome! Please read the [contributing guidelines](CONTRIBUTING.md) before getting started.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
