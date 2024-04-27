@@ -5,8 +5,8 @@ This project is a simple CRUD (Create, Read, Update, Delete) application designe
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
+   - [Prerequisites](#prerequisites)
+   - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
 
